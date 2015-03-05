@@ -1,0 +1,47 @@
+﻿Build started 3/4/2015 11:45:50 PM.
+     1>Project "D:\project\imagineCup\WittedMouse\proj.win32\WittedMouse.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\vs2013\VC\bin\CL.exe /c /I..\Classes /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\cocos\audio\include" /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\external" /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\external\chipmunk\include\chipmunk" /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\extensions" /I.. /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\cocos\2d\..\..\cocos\editor-support" /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\cocos\2d\..\..\cocos" /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\cocos\2d\..\..\cocos\platform" /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\cocos\2d\..\..\cocos\platform\desktop" /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\cocos\2d\..\..\external\glfw3\include\win32" /I"D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\cocos\2d\..\..\external\win32-specific\gles\include\OGLES" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _VARIADIC_MAX=10 /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\LoadingScene.cpp ..\Classes\WeatherUtils.cpp
+         LoadingScene.cpp
+         WeatherUtils.cpp
+     1>d:\cocosframework\frameworks\cocos2d-x-3.4rc1\cocos\network\httprequest.h(185): warning C4996: 'cocos2d::network::HttpRequest::setResponseCallback': was declared deprecated (..\Classes\WeatherUtils.cpp)
+                 d:\cocosframework\frameworks\cocos2d-x-3.4rc1\cocos\network\httprequest.h(188) : see declaration of 'cocos2d::network::HttpRequest::setResponseCallback'
+     1>d:\cocosframework\frameworks\cocos2d-x-3.4rc1\cocos\network\httprequest.h(185): warning C4996: 'cocos2d::network::HttpRequest::setResponseCallback': was declared deprecated (..\Classes\LoadingScene.cpp)
+                 d:\cocosframework\frameworks\cocos2d-x-3.4rc1\cocos\network\httprequest.h(188) : see declaration of 'cocos2d::network::HttpRequest::setResponseCallback'
+       PreLinkEvent:
+         if not exist "D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\" mkdir "D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\"
+         xcopy /Y /Q "D:\cocosFramework\frameworks\cocos2d-x-3.4rc1\prebuilt\win32\*.*" "D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\"
+         
+         :VCEnd
+         49 File(s) copied
+       Link:
+         D:\vs2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\WittedMouse.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\ /LIBPATH:D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\ opengl32.lib glew32.lib libzlib.lib libpng.lib libjpeg.lib libtiff.lib libwebp.lib libiconv.lib glfw3.lib freetype250.lib winmm.lib ws2_32.lib libchipmunk.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\WittedMouse.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\WittedMouse.lib" /MACHINE:X86 /SAFESEH Debug.win32\game.res
+         Debug.win32\ActionController.obj
+         Debug.win32\AnimationUtils.obj
+         Debug.win32\AppDelegate.obj
+         Debug.win32\CucrbitManage.obj
+         Debug.win32\Cucurbit.obj
+         Debug.win32\GameOver.obj
+         Debug.win32\HUDLayer.obj
+         Debug.win32\I18N.obj
+         Debug.win32\json_reader.obj
+         Debug.win32\json_value.obj
+         Debug.win32\json_writer.obj
+         Debug.win32\LoadingScene.obj
+         Debug.win32\MainScene.obj
+         Debug.win32\MenuScene.obj
+         Debug.win32\Mouse.obj
+         Debug.win32\Pause.obj
+         Debug.win32\Popup.obj
+         Debug.win32\Prop.obj
+         Debug.win32\PropContainer.obj
+         Debug.win32\PropManager.obj
+         Debug.win32\Util.obj
+         Debug.win32\WeatherUtils.obj
+         Debug.win32\main.obj
+         WittedMouse.vcxproj -> D:\project\imagineCup\WittedMouse\proj.win32\Debug.win32\WittedMouse.exe
+     1>Done Building Project "D:\project\imagineCup\WittedMouse\proj.win32\WittedMouse.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:14.29

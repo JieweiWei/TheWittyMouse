@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene">
+      <UniqueIdentifier>{8dcc49a9-5962-4d2e-b9f8-1e7588d30c81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tools">
+      <UniqueIdentifier>{09f5e059-be61-4332-a547-04a38b71c20e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tools\I18N">
+      <UniqueIdentifier>{b581339b-2aeb-4024-b335-2b4f3f8755e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tools\AnimationUtils">
+      <UniqueIdentifier>{a5e6b934-b514-4085-9751-52aa72a074c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity">
+      <UniqueIdentifier>{f022062b-f56a-499e-b4c5-6f81258e6f19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Manager">
+      <UniqueIdentifier>{ad19ec54-76d5-4caa-9611-42477a9b4c1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tools\Configure">
+      <UniqueIdentifier>{ffdacdbf-8fc7-4e1f-997b-308ad4a898d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity\Mouse">
+      <UniqueIdentifier>{541465d8-a99d-4e19-bc77-bdb888f8cd4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity\Curcurbit">
+      <UniqueIdentifier>{30ae52f2-91b7-4ac9-8113-a4c6f7e69f91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity\Prop">
+      <UniqueIdentifier>{63346256-2cc0-4e5a-8f74-54f4d92b1c80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Manager\CucrbitManager">
+      <UniqueIdentifier>{5e2e5259-3d0b-4164-9317-ed4c4e0ba8c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Manager\PropManager">
+      <UniqueIdentifier>{36b65d51-633b-4d2f-a1b6-697b94b78357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene\LoadingScene">
+      <UniqueIdentifier>{2977a608-aef7-46d4-b07a-3417eebd31d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene\MenuScene">
+      <UniqueIdentifier>{b306f49d-4446-43ce-8d27-37a652ee0f9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene\MainScene">
+      <UniqueIdentifier>{4bd2072e-eb46-4c2b-a63c-017b19898b00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tools\JSON">
+      <UniqueIdentifier>{247a82b9-22e7-47bc-851d-8abc9a0a30a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tools\Popup">
+      <UniqueIdentifier>{c9fa2833-ef32-4555-a95e-1fbbf7c65b5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Manager\ActionController">
+      <UniqueIdentifier>{4038089f-e237-477a-996a-c83af4f973cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tools\WeatherInfo">
+      <UniqueIdentifier>{b6d131ca-6878-4c2c-be98-82598f3e7424}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\I18N.cpp">
+      <Filter>src\Tools\I18N</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\JSON\json_reader.cpp">
+      <Filter>src\Tools\JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\JSON\json_value.cpp">
+      <Filter>src\Tools\JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\JSON\json_writer.cpp">
+      <Filter>src\Tools\JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AnimationUtils.cpp">
+      <Filter>src\Tools\AnimationUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util.cpp">
+      <Filter>src\Tools\Configure</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Mouse.cpp">
+      <Filter>src\Entity\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Cucurbit.cpp">
+      <Filter>src\Entity\Curcurbit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Prop.cpp">
+      <Filter>src\Entity\Prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PropContainer.cpp">
+      <Filter>src\Entity\Prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CucrbitManage.cpp">
+      <Filter>src\Manager\CucrbitManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PropManager.cpp">
+      <Filter>src\Manager\PropManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameOver.cpp">
+      <Filter>src\Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HUDLayer.cpp">
+      <Filter>src\Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainScene.cpp">
+      <Filter>src\Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoadingScene.cpp">
+      <Filter>src\Scene\LoadingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MenuScene.cpp">
+      <Filter>src\Scene\MenuScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Pause.cpp">
+      <Filter>src\Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Popup.cpp">
+      <Filter>src\Tools\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ActionController.cpp">
+      <Filter>src\Manager\ActionController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WeatherInfo.cpp">
+      <Filter>src\Tools\WeatherInfo</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\I18N.h">
+      <Filter>src\Tools\I18N</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\autolink.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\config.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\features.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\forwards.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\json.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\json_batchallocator.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\reader.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\value.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JSON\writer.h">
+      <Filter>src\Tools\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AnimationUtils.h">
+      <Filter>src\Tools\AnimationUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util.h">
+      <Filter>src\Tools\Configure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Mouse.h">
+      <Filter>src\Entity\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Cucurbit.h">
+      <Filter>src\Entity\Curcurbit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Prop.h">
+      <Filter>src\Entity\Prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PropContainer.h">
+      <Filter>src\Entity\Prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CucrbitManage.h">
+      <Filter>src\Manager\CucrbitManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PropManager.h">
+      <Filter>src\Manager\PropManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameOver.h">
+      <Filter>src\Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HUDLayer.h">
+      <Filter>src\Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainScene.h">
+      <Filter>src\Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoadingScene.h">
+      <Filter>src\Scene\LoadingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuScene.h">
+      <Filter>src\Scene\MenuScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Pause.h">
+      <Filter>src\Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Popup.h">
+      <Filter>src\Tools\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ActionController.h">
+      <Filter>src\Manager\ActionController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WeatherInfo.h">
+      <Filter>src\Tools\WeatherInfo</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Classes\JSON\json_internalarray.inl">
+      <Filter>src\Tools\JSON</Filter>
+    </None>
+    <None Include="..\Classes\JSON\json_internalmap.inl">
+      <Filter>src\Tools\JSON</Filter>
+    </None>
+    <None Include="..\Classes\JSON\json_valueiterator.inl">
+      <Filter>src\Tools\JSON</Filter>
+    </None>
+    <None Include="..\Classes\JSON\sconscript">
+      <Filter>src\Tools\JSON</Filter>
+    </None>
+  </ItemGroup>
+</Project>
