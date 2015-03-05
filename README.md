@@ -13,5 +13,5 @@ Viual Studio 2013
 
 Run
 ---   
->cd .\proj.win32      
->WittedMouse.sln   
+\> cd .\proj.win32      
+\> WittedMouse.sln   
