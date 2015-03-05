@@ -28,6 +28,7 @@ public:
 
 private:
 	void finshGetData(Ref* data);
+	void onHttpRequestCompleted(HttpClient *sender, HttpResponse *response);
 
 private:
 	string responseStr;
