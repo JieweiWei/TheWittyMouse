@@ -4,14 +4,14 @@
 <plist version="1.0">
     <dict>
         <key>weather0</key>
-        <string>小雨转阴</string>
+        <string>阴</string>
         <key>date</key>
         <string>2015-03-06</string>
         <key>weather1</key>
-        <string>阴</string>
+        <string>阴转多云</string>
         <key>weather2</key>
         <string>多云转小雨</string>
         <key>weather3</key>
-        <string>阴</string>
+        <string>小雨</string>
     </dict>
 </plist>
