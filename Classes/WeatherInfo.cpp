@@ -2,7 +2,6 @@
 #include "JSON\writer.h"
 #include "JSON\reader.h"
 #include "JSON\value.h"
-#include "Tinyxml\tinyxml.h"
 
 WeatherInfo* WeatherInfo::_weatherInfo = NULL;
 
@@ -40,13 +39,51 @@ bool WeatherInfo::init() {
 		"getWeatherInfo",
 		NULL
 	);
+	Json::Reader reader;
+	Json::Value root;
+	string data = FileUtils::getInstance()->getStringFromFile(WEATHER_STYLE_FILE);
+	if (reader.parse(data, root, false)) {
+		for (auto styleStr : root["weatherStyle"]) {
+			_weatherStyleStr.push_back(styleStr.asString());
+		}
+	}
 	return true;
+}
+
+WeatherStyle WeatherInfo::getTodayWeather() {
+	getWeatherInfo();
+	ValueMap dict = FileUtils::getInstance()->getValueMapFromFile(WEATHER_DATA_FILE);
+	if (dict.empty()) {
+		return defaultStyle;
+	}
+	string _date = dict["date"].asString();
+	int diffDay = getDiffDay(_date);
+	if (diffDay <= 3) {
+		string curStyleStr = dict[StringUtils::format("weather%d", diffDay)].asString();
+		for (int i = 0; i < _weatherStyleStr.size(); ++i) {
+			if (curStyleStr.find(_weatherStyleStr[i]) != string::npos) {
+				return (WeatherStyle)i;
+			}
+		}
+	}
+	return defaultStyle;
+}
+
+int WeatherInfo::getDiffDay(string _date) {
+	time_t now;
+	time(&now);
+	struct tm recordTime = *localtime(&now);
+	int _year, _mon, _day;
+	sscanf(_date.c_str(), "%d-%d-%d", &_year, &_mon, &_day);
+	recordTime.tm_year = _year - 1900;
+	recordTime.tm_mon = _mon - 1;
+	recordTime.tm_mday = _day;
+	return difftime(now, mktime(&recordTime)) / (60 * 60 * 24);
 }
 
 void WeatherInfo::getWeatherInfo() {
 	httpGet(GET_IP_URL, "getIp");
 }
-
 
 void WeatherInfo::httpGet(string url, string notificationType) {
 	log(("GET : " + url).c_str());
@@ -62,6 +99,7 @@ void WeatherInfo::httpGet(string url, string notificationType) {
 
 void WeatherInfo::onHttpRequestCompleted(HttpClient *sender, HttpResponse *response, string notificationType) {
 	if (!response) {
+		log("no response");
 		return;
 	}
 	if (strlen(response->getHttpRequest()->getTag()) != 0) {
@@ -104,13 +142,16 @@ void WeatherInfo::finishGetCityInfo(Ref* data) {
 		log("get city code fail");
 		return;
 	}
-	string cityCode = parseCityCode((const char*)data);
-	if (cityCode == "") {
-		log("parse city code fail");
-		return;
+	string jsonStr = (const char*)data;
+	Json::Reader reader;
+	Json::Value root;
+	if (reader.parse(jsonStr, root, false)) {
+		root["city"].asString();
+		httpGet(StringUtils::format(WEATHER_API, root["city"].asCString()), "getWeatherInfo");
 	}
-	httpGet(StringUtils::format(GET_WEATHER_INFO, cityCode.c_str()), "getWeatherInfo");
-
+	else {
+		log("parse city name fail");
+	}
 }
 
 void WeatherInfo::finishGetWeatherInfo(Ref* data) {
@@ -121,44 +162,19 @@ void WeatherInfo::finishGetWeatherInfo(Ref* data) {
 	parseWeatherInfoAndSave((const char*)data);
 }
 
-string WeatherInfo::parseCityCode(string jsonStr) {
-	Json::Reader reader;
-	Json::Value root;
-	if (reader.parse(jsonStr, root, false)) {
-		string cityName = root["city"].asString();
-		
-		if (cityName == "") {
-			return "";
-		}
-		TiXmlDocument* cityList = new TiXmlDocument(CITYLIST_XML);
-		cityList->LoadFile();
-		TiXmlNode* citiesElement = cityList->RootElement()->FirstChildElement();
-		string a = citiesElement->Value();
-		if (citiesElement == NULL) {
-			return "";
-		}
-		
-		TiXmlNode* cityElement = NULL;
-		for (auto curElement = citiesElement->FirstChildElement(); curElement != NULL;
-			curElement = curElement->NextSiblingElement()) {
-			if (curElement->Attribute("d2") == cityName) {
-				return curElement->Attribute("d1");
-			}
-		}
-	}
-	return "";
-}
-
 void WeatherInfo::parseWeatherInfoAndSave(string jsonStr) {
+	if (jsonStr == "") {
+		log("weather info empty");
+		return;
+	}
 	Json::Reader reader;
 	Json::Value root;
 	if (reader.parse(jsonStr, root, false)) {
-		string date_y;
-		string weathers[6];
 		ValueMap dict;
-		dict["date_y"] = root["weatherinfo"]["date_y"].asString();
-		for (int i = 0; i < 6; ++i) {
-			dict[StringUtils::format("weather%d", i + 1)] = Value(root["weatherinfo"][StringUtils::format("weather%d", i + 1)].asString());
+		dict["date"] = Value(root["date"].asString());
+		auto weatherInfo = root["results"][Json::UInt(0)]["weather_data"];
+		for (int i = 0; i < weatherInfo.size(); ++i) {
+			dict[StringUtils::format("weather%d", i)] = Value(weatherInfo[i]["weather"].asString());
 		}
 		FileUtils::getInstance()->writeToFile(dict, WEATHER_DATA_FILE);
 	}

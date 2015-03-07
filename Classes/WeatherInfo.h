@@ -8,9 +8,10 @@ USING_NS_CC;
 using namespace cocos2d::network;
 using std::string;
 
+/* 天气信息存储路径 */
 #define WEATHER_DATA_FILE "data/weathers.xml"
 
-#define CITYLIST_XML "data/citylist.xml"
+#define WEATHER_STYLE_FILE "data/weatherStyle.json"
 
 /* 外网获取IP */
 #define GET_IP_URL "http://ip.dnsexit.com/"
@@ -18,16 +19,19 @@ using std::string;
 /* 获取位置信息 */
 #define GET_CITY_INFO_URL "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=" // + "ip"
 
-/* 获取天气信息 */
-#define GET_WEATHER_INFO "http://m.weather.com.cn/data/%s.html"
+/* 车联网API */
+#define WEATHER_API "http://api.map.baidu.com/telematics/v3/weather?location=%s&output=json&ak=EkQNeFX5u8kcWFqlNjnm8LCT" // %s is city name
+
+enum WeatherStyle {rain, sunny, cloudy, windy, defaultStyle };
 
 class WeatherInfo : public Ref {
 public:
 	static WeatherInfo* getInstance();
 	virtual bool init();
-	void getWeatherInfo();
-
+	WeatherStyle getTodayWeather();
 private:
+	void getWeatherInfo();
+	inline int getDiffDay(string _date);
 	void httpGet(string url, string notificationType);
 	void onHttpRequestCompleted(HttpClient *sender, HttpResponse *response, string notificationType);
 
@@ -35,11 +39,10 @@ private:
 	void finishGetCityInfo(Ref* data);
 	void finishGetWeatherInfo(Ref* data);
 
-	string parseCityCode(string jsonStr);
 	void parseWeatherInfoAndSave(string jsonStr);
-
 private:
 	static WeatherInfo* _weatherInfo;
+	std::vector<string> _weatherStyleStr;
 };
 
 #endif // !_WEATHERINFO_H_
