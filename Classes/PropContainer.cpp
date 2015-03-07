@@ -11,7 +11,8 @@
 bool PropContainer::initPropContainer(Attribute attribute) {
     if (!Sprite::init())
         return false;
-    
+	this->attribute = attribute;
+	this->setAnchorPoint(Vec2(0, 0));
     auto size = Director::getInstance()->getVisibleSize();
     numLabel = Label::createWithBMFont("fonts/font-issue1343.fnt", "0");
     propNum = 0;
@@ -19,18 +20,15 @@ bool PropContainer::initPropContainer(Attribute attribute) {
     switch(attribute) {
         case FERTILIZER:
             this->setSpriteFrame("chemical-fertilizer.png");
-            this->setPosition(this->getContentSize().width / 2,
-                              size.height / 4.5 + this->getContentSize().height / 2);
+            this->setPosition(2, size.height / 4.5 + this->getContentSize().height / 2);
             break;
         case BLOCK:
             this->setSpriteFrame("magnet.png");
-            this->setPosition(this->getContentSize().width / 2,
-                              size.height / 4.5 + 4 * this->getContentSize().height / 2);
+            this->setPosition(2, size.height / 4.5 + 4 * this->getContentSize().height / 2);
             break;
         default:
             this->setSpriteFrame("shovel.png");
-            this->setPosition(this->getContentSize().width / 2,
-                              size.height / 4.5 + 8 * this->getContentSize().height / 2);
+            this->setPosition(2, size.height / 4.5 + 8 * this->getContentSize().height / 2);
             break;
     }
     numLabel->setPosition(this->getContentSize().width + 20, this->getContentSize().height / 2);

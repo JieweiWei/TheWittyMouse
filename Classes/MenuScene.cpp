@@ -5,6 +5,7 @@
 #include "AnimationUtils.h"
 #include "I18N.h"
 #include "SimpleAudioEngine.h"
+#include "CloudManager.h"
 
 Scene* MenuScene::createScene() {
 	auto scene = Scene::create();
@@ -20,41 +21,43 @@ bool MenuScene::init() {
 	_isShow = false;
 	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/bgmusic.mp3", true);
 	loadUIAndSetListner();
-	initPopup();
+	//initPopup();
 	
 	return true;
 }
 
 void MenuScene::loadUIAndSetListner() {
-	auto rootNode = CSLoader::createNode("MenuScene.csb");
+	auto rootNode = CSLoader::createNode("Menu/MenuScene.csb");
 	this->addChild(rootNode);
 
-	auto singleMode = (Button*)(rootNode->getChildByName("singleMode"));
+	auto singleMode = (Button*)(rootNode->getChildByName("beginBtn"));
 	singleMode->setTitleText(I18N::getInstance()->getString("singleMode"));
 	singleMode->addTouchEventListener(this, toucheventselector(MenuScene::singleModeEvent));
 
-	auto battle = (Button*)(rootNode->getChildByName("battle"));
+	auto battle = (Button*)(rootNode->getChildByName("battleBtn"));
 	battle->setTitleText(I18N::getInstance()->getString("battle"));
 
-	auto mouse = (Sprite*)(rootNode->getChildByName("mouse"));
-	mouse->runAction(Animate::create(AnimationUtils::createWithName("run", 0.1f, -1)));
+	//auto mouse = (Sprite*)(rootNode->getChildByName("mouse"));
+	//mouse->runAction(Animate::create(AnimationUtils::createWithName("run", 0.1f, -1)));
 	
-	_itemList = (ListView*)(rootNode->getChildByName("itemList"));
+	_itemList = (ListView*)(rootNode->getChildByName("listView"));
 
-	auto showOrHideBtn = (Button*)(_itemList->getChildByName("showOrHide"));
+	auto showOrHideBtn = (Button*)(_itemList->getChildByName("showOrHideBtn"));
 	showOrHideBtn->addTouchEventListener(this, toucheventselector(MenuScene::showOrHideEvent));
 
+	/*
 	auto developerBtn = (Button*)(_itemList->getChildByName("developer"));
 	developerBtn->addTouchEventListener(this, toucheventselector(MenuScene::showDeveloper));
 
 	auto helpBtn = (Button*)(_itemList->getChildByName("help"));
-	helpBtn->addTouchEventListener(this, toucheventselector(MenuScene::showHelp));
+	helpBtn->addTouchEventListener(this, toucheventselector(MenuScene::showHelp));*/
 
 	auto settingBtn = (Button*)(_itemList->getChildByName("setting"));
 	settingBtn->addTouchEventListener(this, toucheventselector(MenuScene::showSetting));
 
+	/*
 	auto infoBtn = (Button*)(_itemList->getChildByName("info"));
-	infoBtn->addTouchEventListener(this, toucheventselector(MenuScene::showInfo));
+	infoBtn->addTouchEventListener(this, toucheventselector(MenuScene::showInfo));*/
 }
 
 void MenuScene::initPopup() {
@@ -78,14 +81,18 @@ void MenuScene::singleModeEvent(Ref*, TouchEventType type) {
 	}
 }
 
-void MenuScene::showOrHideEvent(Ref*, TouchEventType type) {
+void MenuScene::showOrHideEvent(Ref* sender, TouchEventType type) {
+	auto showOrHideBtn = (Button*)sender;
 	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
+		showOrHideBtn->setScale(1);
 		Point curPoint = _itemList->getPosition();
 		_isShow = !_isShow;
-		MoveBy* moveBy = MoveBy::create(0.35f, Point(0, 200 * (_isShow ? 1 : -1)));
+		MoveBy* moveBy = MoveBy::create(0.35f, Point(0, 240 * (_isShow ? 1 : -1)));
 		_itemList->runAction(moveBy);
-		auto showOrHideBtn = (Button*)(_itemList->getChildByName("showOrHide"));
-		showOrHideBtn->setTitleText(_isShow ? "hide" : "show");
+		showOrHideBtn->setFlippedY(_isShow);
+	}
+	else if (type == TouchEventType::TOUCH_EVENT_BEGAN) {
+		showOrHideBtn->setScale(BUTTON_CLICK_SCALE);
 	}
 }
 
@@ -118,8 +125,11 @@ void MenuScene::showHelp(Ref*, TouchEventType type) {
 	}
 }
 
-void MenuScene::showSetting(Ref*, TouchEventType type) {
+void MenuScene::showSetting(Ref* sender, TouchEventType type) {
+	auto settingBtn = (Button*)sender;
 	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
+		settingBtn->setScale(1);
+		/*
 		_popup->setTitleText(I18N::getInstance()->getString("settingTitle"));
 		_popup->removeMainBody();
 		auto rootNode = CSLoader::createNode("setting.csb");
@@ -136,7 +146,10 @@ void MenuScene::showSetting(Ref*, TouchEventType type) {
 		
 
 		_popup->addNodeInMain(settingMain);
-		_popup->display();
+		_popup->display();*/
+	}
+	else if (type == TouchEventType::TOUCH_EVENT_BEGAN) {
+		settingBtn->setScale(BUTTON_CLICK_SCALE);
 	}
 }
 

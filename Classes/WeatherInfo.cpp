@@ -9,8 +9,6 @@ WeatherInfo::WeatherInfo() {
 	_curWeatherStyle = none;
 }
 
-WeatherInfo::~WeatherInfo() {}
-
 WeatherInfo* WeatherInfo::getInstance() {
 	if (_weatherInfo == NULL) {
 		_weatherInfo = new WeatherInfo();

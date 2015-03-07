@@ -77,3 +77,9 @@ bool Cucurbit::grow() {
     return false;
 }
 
+void Cucurbit::growUp() {
+	if (type == 0) {
+		growTime = 2;
+		grow();
+	}
+}

@@ -35,10 +35,10 @@ bool LoadingScene::init() {
 	loadRes();
 	loadData();
 
-	Sprite* mouse = Sprite::createWithSpriteFrameName("run00.png");
+	auto mouse = Mouse::createMouse();
 	mouse->setPosition(Point(-100, 150));
 	this->addChild(mouse, 1);
-	mouse->runAction(Animate::create(AnimationUtils::createWithName("run", 0.1f, -1)));
+	mouse->runAction(Animate::create(AnimationUtils::createWithName("mouse", 0.1f, -1)));
 
 	MoveTo* moveTo = MoveTo::create(4.0f, Point(winSize.width + 100, 150));
 	CallFunc* callFunc = CallFunc::create([]() {
@@ -52,6 +52,7 @@ void LoadingScene::loadRes() {
 	SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
 	frameCache->addSpriteFramesWithFile("images/mouse.plist", "images/mouse.png");
 	frameCache->addSpriteFramesWithFile("images/MainGame.plist", "images/MainGame.png");
+	frameCache->addSpriteFramesWithFile("images/btn.plist", "images/btn.png");
 
 	CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sound/bgmusic.mp3");
 	CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sound/cut-hulu.mp3");

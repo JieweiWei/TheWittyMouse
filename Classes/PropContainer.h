@@ -39,6 +39,7 @@ public:
      */
     void updateContainer();
     
+	CC_SYNTHESIZE(Attribute, attribute, TheAttribute);
     CREATE_FUNC(PropContainer);
     
 private:

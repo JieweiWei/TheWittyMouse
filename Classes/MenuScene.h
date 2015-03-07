@@ -9,6 +9,8 @@
 USING_NS_CC;
 using namespace cocos2d::ui;
 
+#define BUTTON_CLICK_SCALE 0.9
+
 
 class MenuScene : public Layer {
 public:
@@ -25,7 +27,7 @@ private:
 
 	/* 按钮的触发事件 */
 	void singleModeEvent(Ref*, TouchEventType type);
-	void showOrHideEvent(Ref*, TouchEventType type);
+	void showOrHideEvent(Ref* sender, TouchEventType type);
 	void showDeveloper(Ref*, TouchEventType type);
 	void showHelp(Ref*, TouchEventType type);
 	void showSetting(Ref*, TouchEventType type);

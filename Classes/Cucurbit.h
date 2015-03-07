@@ -24,6 +24,11 @@ public:
      *@return Wtehter the cucrbit is mature
      */
     bool grow();
+
+	/**
+	* The cucrbit grow up directly
+	*/
+	void growUp();
     
     CC_SYNTHESIZE(bool, isCut, IsCut);
     CC_SYNTHESIZE(int, type, Type);

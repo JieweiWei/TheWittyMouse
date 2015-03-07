@@ -26,12 +26,11 @@ enum WeatherStyle {rain, sunny, cloudy, windy, defaultStyle, none};
 
 class WeatherInfo : public Ref {
 public:
-	WeatherInfo();
-	~WeatherInfo();
 	static WeatherInfo* getInstance();
 	virtual bool init();
 	WeatherStyle getTodayWeather();
 private:
+	WeatherInfo();
 	WeatherStyle _getTodayWeather();
 	void getWeatherInfo();
 	inline int getDiffDay(string _date);

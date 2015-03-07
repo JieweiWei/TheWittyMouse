@@ -28,38 +28,33 @@ bool Mouse::init() {
         return false;
     
     auto size = Director::getInstance()->getVisibleSize();
-    this->createWithSpriteFrameName("run00.png");
+    this->createWithSpriteFrameName("mouse00.png");
     this->setTag(MOUSETAG);
-    this->setPosition(Vec2(size.width / 6, size.height / 4.5));
+    this->setPosition(Vec2(size.width / 6, size.height / 4));
+	this->setScale(0.4);
     
     return true;
 }
 
 void Mouse::run() {
     Util::setDif(6);
-    auto preAction = this->getActionByTag(MOUSETAG);
-    if (!preAction)
-        this->stopAction(preAction);
+	this->stopAllActions();
     
-	this->runAction(Animate::create(AnimationUtils::createWithName("run", 0.1f, -1)));
+	this->runAction(Animate::create(AnimationUtils::createWithName("mouse", 0.08f, -1)));
 }
 
 void Mouse::jump() {
     Util::setDif(8);
-    auto preAction = this->getActionByTag(MOUSETAG);
-    if (!preAction)
-        this->stopAction(preAction);
+	this->stopAllActions();
     
-	this->runAction(Animate::create(AnimationUtils::createWithName("jump", 0.1f, -1)));
+	this->runAction(Animate::create(AnimationUtils::createWithName("mouse", 0.1f, -1)));
 }
 
 void Mouse::fall() {
     Util::setDif(0);
-    auto preAction = this->getActionByTag(MOUSETAG);
-    if (!preAction)
-        this->stopAction(preAction);
+	this->stopAllActions();
     
-	this->runAction(Animate::create(AnimationUtils::createWithName("fall", 0.1f, -1)));
+	this->runAction(Animate::create(AnimationUtils::createWithName("mouse", 0.1f, -1)));
 }
 
 int Mouse::getIQ() {

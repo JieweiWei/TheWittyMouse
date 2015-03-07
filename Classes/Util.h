@@ -20,6 +20,7 @@ USING_NS_CC;
 #define PAUSETAG 12
 #define PROPTAG 13
 #define GAMEOVERTAG 14
+#define CLOUDTAG 15
 
 class Util {
 public:

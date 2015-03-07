@@ -1,0 +1,32 @@
+<Solution>
+  <PropertyGroup Name="TheWittyMouseCCS" Version="2.1.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="Menu">
+          <Project Name="MenuScene.csd" />
+          <Image Name="background.png" />
+          <Image Name="cloud.png" />
+          <Image Name="cloud2.png" />
+          <Image Name="greenHuLuBig.png" />
+          <Image Name="redHuLuBig.png" />
+          <Image Name="redHuLuSmall.png" />
+          <Image Name="yellowHuLuBig.png" />
+          <Image Name="yellowHuLuSmall.png" />
+          <Image Name="flower.png" />
+          <Image Name="fall01.png" />
+          <Folder Name="btn">
+            <Image Name="back.png" />
+            <Image Name="base.png" />
+            <Image Name="closeBtn.png" />
+            <Image Name="forward.png" />
+            <Image Name="pauseBtn.png" />
+            <Image Name="playBtn.png" />
+            <Image Name="settingBtn.png" />
+            <Image Name="showBtn.png" />
+          </Folder>
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
