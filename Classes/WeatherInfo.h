@@ -22,14 +22,17 @@ using std::string;
 /* ³µÁªÍøAPI */
 #define WEATHER_API "http://api.map.baidu.com/telematics/v3/weather?location=%s&output=json&ak=EkQNeFX5u8kcWFqlNjnm8LCT" // %s is city name
 
-enum WeatherStyle {rain, sunny, cloudy, windy, defaultStyle };
+enum WeatherStyle {rain, sunny, cloudy, windy, defaultStyle, none};
 
 class WeatherInfo : public Ref {
 public:
+	WeatherInfo();
+	~WeatherInfo();
 	static WeatherInfo* getInstance();
 	virtual bool init();
 	WeatherStyle getTodayWeather();
 private:
+	WeatherStyle _getTodayWeather();
 	void getWeatherInfo();
 	inline int getDiffDay(string _date);
 	void httpGet(string url, string notificationType);
@@ -41,6 +44,7 @@ private:
 
 	void parseWeatherInfoAndSave(string jsonStr);
 private:
+	WeatherStyle _curWeatherStyle;
 	static WeatherInfo* _weatherInfo;
 	std::vector<string> _weatherStyleStr;
 };

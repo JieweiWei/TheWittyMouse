@@ -5,6 +5,12 @@
 
 WeatherInfo* WeatherInfo::_weatherInfo = NULL;
 
+WeatherInfo::WeatherInfo() {
+	_curWeatherStyle = none;
+}
+
+WeatherInfo::~WeatherInfo() {}
+
 WeatherInfo* WeatherInfo::getInstance() {
 	if (_weatherInfo == NULL) {
 		_weatherInfo = new WeatherInfo();
@@ -51,6 +57,13 @@ bool WeatherInfo::init() {
 }
 
 WeatherStyle WeatherInfo::getTodayWeather() {
+	if (_curWeatherStyle == none) {
+		_curWeatherStyle = _getTodayWeather();
+	}
+	return _curWeatherStyle;
+}
+
+WeatherStyle WeatherInfo::_getTodayWeather() {
 	getWeatherInfo();
 	ValueMap dict = FileUtils::getInstance()->getValueMapFromFile(WEATHER_DATA_FILE);
 	if (dict.empty()) {
