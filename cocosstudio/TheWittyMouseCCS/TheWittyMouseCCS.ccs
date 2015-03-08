@@ -29,6 +29,7 @@
           <Folder Name="dialog">
             <Image Name="panel.png" />
             <Image Name="titleBg.png" />
+            <Image Name="closeBtn.png" />
           </Folder>
           <Image Name="redHuluSelected.png" />
           <Image Name="redHuluNormal.png" />

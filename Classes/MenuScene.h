@@ -4,13 +4,9 @@
 #include "cocos2d.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "Popup.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
-
-#define BUTTON_CLICK_SCALE 0.9
-
 
 class MenuScene : public Layer {
 public:
@@ -22,22 +18,23 @@ private:
 	/* 加载CocosStudio中UI并添加点击事件 */
 	void loadUIAndSetListner();
 
-	/* 初始化弹出框 */
-	void initPopup();
-
 	/* 按钮的触发事件 */
 	void singleModeEvent(Ref*, TouchEventType type);
 	void showOrHideEvent(Ref* sender, TouchEventType type);
-	void showDeveloper(Ref*, TouchEventType type);
+
 	void showHelp(Ref*, TouchEventType type);
-	void showSetting(Ref*, TouchEventType type);
 	void showInfo(Ref*, TouchEventType type);
-	void hidePopup(Ref* sender);
+	void showSetting(Ref*, TouchEventType type);
+	void showDeveloper(Ref*, TouchEventType type);
+	
+	void closeDialog(Ref*, TouchEventType type);
+	void toggleDialogAndSetTitle(const char* title, bool _isShow);
 
 private:
-	bool _isShow;
+	bool _isBtnListShow;
+	bool _isDialogShow;
 	Node* _itemList;
-	Popup* _popup;
+	Node* _dialog;
 };
 
 

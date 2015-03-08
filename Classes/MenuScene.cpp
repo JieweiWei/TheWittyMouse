@@ -17,10 +17,10 @@ bool MenuScene::init() {
 	if (!Layer::init()) {
 		return false;
 	}
-	_isShow = false;
+	_isBtnListShow = false;
+	_isDialogShow = false;
 	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/bgmusic.mp3", true);
 	loadUIAndSetListner();
-	//initPopup();
 	
 	return true;
 }
@@ -40,38 +40,25 @@ void MenuScene::loadUIAndSetListner() {
 	//mouse->runAction(Animate::create(AnimationUtils::createWithName("run", 0.1f, -1)));
 	
 	_itemList = rootNode->getChildByName("btnList");
+	_dialog = rootNode->getChildByName("dialog");
 
 	auto showOrHideBtn = (Button*)(_itemList->getChildByName("showBtn"));
 	showOrHideBtn->addTouchEventListener(this, toucheventselector(MenuScene::showOrHideEvent));
 
-	/*
-	auto developerBtn = (Button*)(_itemList->getChildByName("developer"));
+	auto helpBtn = (Button*)(_itemList->getChildByName("helpBtn"));
+	helpBtn->addTouchEventListener(this, toucheventselector(MenuScene::showHelp));
+
+	auto infoBtn = (Button*)(_itemList->getChildByName("infoBtn"));
+	infoBtn->addTouchEventListener(this, toucheventselector(MenuScene::showInfo));
+
+	auto settingBtn = (Button*)(_itemList->getChildByName("settingBtn"));
+	settingBtn->addTouchEventListener(this, toucheventselector(MenuScene::showSetting));
+
+	auto developerBtn = (Button*)(_itemList->getChildByName("developerBtn"));
 	developerBtn->addTouchEventListener(this, toucheventselector(MenuScene::showDeveloper));
 
-	auto helpBtn = (Button*)(_itemList->getChildByName("help"));
-	helpBtn->addTouchEventListener(this, toucheventselector(MenuScene::showHelp));*/
-
-	//auto settingBtn = (Button*)(_itemList->getChildByName("setting"));
-	//settingBtn->addTouchEventListener(this, toucheventselector(MenuScene::showSetting));
-
-	/*
-	auto infoBtn = (Button*)(_itemList->getChildByName("info"));
-	infoBtn->addTouchEventListener(this, toucheventselector(MenuScene::showInfo));*/
-}
-
-void MenuScene::initPopup() {
-	_popup = Popup::create();
-	auto hidePopup = MenuItemImage::create(
-		"images/CloseNormal.png",
-		"images/CloseSelected.png",
-		this,
-		menu_selector(MenuScene::hidePopup)
-	);
-	_popup->addMenuInScreenFringe(0, hidePopup, NULL);
-	Label* title = Label::createWithTTF("", "fonts/tangkuijian.ttf", 40.f);
-	title->setColor(Color3B(0, 0, 0));
-	_popup->addTitle(title);
-	this->addChild(_popup);
+	auto closeDialog = (Button*)(_dialog->getChildByName("closeDialog"));
+	closeDialog->addTouchEventListener(this, toucheventselector(MenuScene::closeDialog));
 }
 
 void MenuScene::singleModeEvent(Ref*, TouchEventType type) {
@@ -81,85 +68,63 @@ void MenuScene::singleModeEvent(Ref*, TouchEventType type) {
 }
 
 void MenuScene::showOrHideEvent(Ref* sender, TouchEventType type) {
-	auto showOrHideBtn = (Button*)sender;
 	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
-		showOrHideBtn->setScale(1);
+		auto showOrHideBtn = (Button*)sender;
 		Point curPoint = _itemList->getPosition();
-		_isShow = !_isShow;
-		MoveBy* moveBy = MoveBy::create(0.35f, Point(0, 245 * (_isShow ? 1 : -1)));
-		showOrHideBtn->setFlippedY(_isShow);
+		_isBtnListShow = !_isBtnListShow;
+		MoveBy* moveBy = MoveBy::create(0.35f, Point(0, 245 * (_isBtnListShow ? 1 : -1)));
+		showOrHideBtn->setFlippedY(_isBtnListShow);
 		_itemList->runAction(moveBy);
-	}
-	else if (type == TouchEventType::TOUCH_EVENT_BEGAN) {
-		showOrHideBtn->setScale(BUTTON_CLICK_SCALE);
 	}
 }
 
-void MenuScene::showDeveloper(Ref*, TouchEventType type) {
-	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
-		_popup->setTitleText(I18N::getInstance()->getString("developerTitle"));
-		_popup->removeMainBody();
-		Vector<MenuItem*> items;
-		Label* label;
-		int num = Value(I18N::getInstance()->getString("developerNum")).asInt();
-		for (int i = 0; i < num; ++i) {
-			label = Label::createWithTTF(I18N::getInstance()->getString("developer"+Value(i).asString()), "fonts/tangkuijian.ttf", 30.f);
-			label->setColor(Color3B(0, 0, 0));
-			items.pushBack(MenuItemLabel::create(label));
-		}
-		_popup->addMainMenu(0, items);
-		_popup->display();
-	}
-}
 
 void MenuScene::showHelp(Ref*, TouchEventType type) {
 	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
-		Size visibleSize = Director::getInstance()->getVisibleSize();
-		_popup->setTitleText(I18N::getInstance()->getString("helpTitle"));
-		_popup->removeMainBody();
-		auto rootNode = CSLoader::createNode("help.csb");
-		auto helpMain = rootNode->getChildByName("helpStep");
-		_popup->addNodeInMain(helpMain);
-		_popup->display();
+		toggleDialogAndSetTitle(I18N::getInstance()->getString("helpTitle"), true);
+	}
+}
+
+void MenuScene::showInfo(Ref*, TouchEventType type) {
+	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
+		toggleDialogAndSetTitle(I18N::getInstance()->getString("infoTitle"), true);
 	}
 }
 
 void MenuScene::showSetting(Ref* sender, TouchEventType type) {
 	auto settingBtn = (Button*)sender;
 	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
-		settingBtn->setScale(1);
-		/*
-		_popup->setTitleText(I18N::getInstance()->getString("settingTitle"));
-		_popup->removeMainBody();
-		auto rootNode = CSLoader::createNode("setting.csb");
-		auto settingMain = rootNode->getChildByName("settingMain");
-		
-		auto musicTitle = (Text*)settingMain->getChildByName("musicTitle");
-		musicTitle->setText(I18N::getInstance()->getString("musicTitle"));
-		auto soundTitle = (Text*)settingMain->getChildByName("soundTitle");
-		soundTitle->setText(I18N::getInstance()->getString("soundTitle"));
-		auto languageTitle = (Text*)settingMain->getChildByName("languageTitle");
-		languageTitle->setText(I18N::getInstance()->getString("languageTitle"));
+		toggleDialogAndSetTitle(I18N::getInstance()->getString("settingTitle"), true);
+	}
+}
 
-		auto musicSelect = (CheckBox*)settingMain->getChildByName("musicSelect");
-		
+void MenuScene::showDeveloper(Ref*, TouchEventType type) {
+	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
+		toggleDialogAndSetTitle(I18N::getInstance()->getString("developerTitle"), true);
+	}
+}
 
-		_popup->addNodeInMain(settingMain);
-		_popup->display();*/
+void MenuScene::closeDialog(Ref* sender, TouchEventType type) {
+	auto closeBtn = (Button*)sender;
+	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
+		closeBtn->setScale(1);
+		toggleDialogAndSetTitle("", false);
 	}
 	else if (type == TouchEventType::TOUCH_EVENT_BEGAN) {
-		settingBtn->setScale(BUTTON_CLICK_SCALE);
+		closeBtn->setScale(0.9);
+	}
+	else {
+		closeBtn->setScale(1);
 	}
 }
 
-void MenuScene::showInfo(Ref*, TouchEventType type) {
-	if (type == TouchEventType::TOUCH_EVENT_ENDED) {
-		_popup->setTitleText(I18N::getInstance()->getString("infoTitle"));
-		_popup->removeMainBody();
-		_popup->display();
+void MenuScene::toggleDialogAndSetTitle(const char* title, bool _isShow) {
+	// _isDialogShow表示dialog的状态,_isShow表示是否想要弹出
+	if (_isShow ^ _isDialogShow) {
+		_isDialogShow = !_isDialogShow;
+		Size visibleSize = Director::getInstance()->getVisibleSize();
+		_dialog->runAction(MoveBy::create(0.4f, Point(0, (_isShow ? -1 : 1) * visibleSize.height)));
 	}
-}
-
-void MenuScene::hidePopup(Ref* sender) {
-	_popup->hide();
+	Text* titleText = (Text*)_dialog->getChildByName("title")->getChildByName("titleText");
+	titleText->setText(title);
 }

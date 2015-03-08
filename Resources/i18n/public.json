@@ -5,7 +5,7 @@
 	"developerTitle" : {"CN" : "开发团队", "EN" : "developer"},
 	"helpTitle" : {"CN" : "帮助", "EN" : "help"},
 	"settingTitle" : {"CN" : "设置", "EN" : "setting"},
-	"infoTitle" : {"CN" : "智商？？", "EN" : "??"},
+	"infoTitle" : {"CN" : "智商", "EN" : "IQ"},
 	"developer" : {
 		"CN" : ["魏杰伟 — 程序开发", "谢志旺 — 程序开发", "梁舒婷 — 游戏美工", "周敏 — 项目管理"],
 		"EN" : ["Jiewei Wei - Program Development", "Zhiwang Xie - Program Development", "Shuting Liang - art designer", "Min Zhou - Project management"]

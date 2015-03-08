@@ -126,7 +126,7 @@
                 <PressedFileData Type="Normal" Path="Menu/btn/infoSelected.png" />
                 <NormalFileData Type="Normal" Path="Menu/btn/infoBtn.png" />
               </NodeObjectData>
-              <NodeObjectData Name="settingbtn" ActionTag="602686065" ZOrder="1" FrameEvent="" Tag="22" ObjectIndex="10" LeftMargin="8.5000" RightMargin="8.5000" TopMargin="195.0000" BottomMargin="99.0000" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="41" Scale9Height="42" ctype="ButtonObjectData">
+              <NodeObjectData Name="settingBtn" ActionTag="602686065" ZOrder="1" FrameEvent="" Tag="22" ObjectIndex="10" LeftMargin="8.5000" RightMargin="8.5000" TopMargin="195.0000" BottomMargin="99.0000" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="41" Scale9Height="42" ctype="ButtonObjectData">
                 <Position X="29.0000" Y="120.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -159,25 +159,25 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="dialog" ActionTag="2027225704" FrameEvent="" Tag="41" ObjectIndex="8" LeftMargin="309.0000" RightMargin="301.0000" TopMargin="146.5051" BottomMargin="243.4949" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
-            <Position X="484.0000" Y="368.4949" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+          <NodeObjectData Name="dialog" ActionTag="2027225704" FrameEvent="" Tag="41" ObjectIndex="8" LeftMargin="116.0000" RightMargin="116.0000" TopMargin="-559.0000" BottomMargin="721.0000" TouchEnable="True" ColorAngle="90.0000" Scale9Width="728" Scale9Height="478" ctype="PanelObjectData">
+            <Position X="480.0000" Y="960.0000" />
+            <Scale ScaleX="0.5000" ScaleY="0.5000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <CColor A="255" R="116" G="183" B="215" />
-            <Size X="350.0000" Y="250.0000" />
-            <PrePosition X="0.5042" Y="0.5758" />
-            <PreSize X="0.3646" Y="0.3906" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="728.0000" Y="478.0000" />
+            <PrePosition X="0.5000" Y="1.5000" />
+            <PreSize X="0.7583" Y="0.7469" />
             <Children>
-              <NodeObjectData Name="title" ActionTag="252198500" FrameEvent="" Tag="45" ObjectIndex="9" LeftMargin="19.0000" RightMargin="19.0000" TopMargin="-45.5000" BottomMargin="209.5000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="312" Scale9Height="86" ctype="PanelObjectData">
-                <Position X="175.0000" Y="252.5000" />
+              <NodeObjectData Name="title" ActionTag="252198500" FrameEvent="" Tag="45" ObjectIndex="9" LeftMargin="208.0000" RightMargin="208.0000" TopMargin="-35.0000" BottomMargin="427.0000" TouchEnable="True" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="312" Scale9Height="86" ctype="PanelObjectData">
+                <Position X="364.0000" Y="470.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <Size X="312.0000" Y="86.0000" />
-                <PrePosition X="0.5000" Y="1.0100" />
-                <PreSize X="0.8914" Y="0.3440" />
+                <PrePosition X="0.5000" Y="0.9833" />
+                <PreSize X="0.4286" Y="0.1799" />
                 <Children>
-                  <NodeObjectData Name="titleText" ActionTag="615299860" FrameEvent="" Tag="46" ObjectIndex="3" LeftMargin="50.5004" RightMargin="45.4996" TopMargin="12.7504" BottomMargin="25.2496" FontSize="40" LabelText="titleText" ctype="TextObjectData">
+                  <NodeObjectData Name="titleText" ActionTag="615299860" FrameEvent="" Tag="46" ObjectIndex="3" LeftMargin="68.5004" RightMargin="63.4996" TopMargin="16.7504" BottomMargin="29.2496" FontSize="40" LabelText="titleText" ctype="TextObjectData">
                     <Position X="158.5004" Y="49.2496" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -193,7 +193,21 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
+              <NodeObjectData Name="closeDialog" ActionTag="-944222514" FrameEvent="" Tag="21" ObjectIndex="19" LeftMargin="634.5468" RightMargin="24.4532" TopMargin="22.7407" BottomMargin="384.2593" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="69" Scale9Height="71" ctype="ButtonObjectData">
+                <Position X="669.0468" Y="419.7593" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="69.0000" Y="71.0000" />
+                <PrePosition X="0.9190" Y="0.8782" />
+                <PreSize X="0.0948" Y="0.1485" />
+                <TextColor A="255" R="65" G="65" B="70" />
+                <DisabledFileData Type="Normal" Path="Menu/dialog/closeBtn.png" />
+                <PressedFileData Type="Normal" Path="Menu/dialog/closeBtn.png" />
+                <NormalFileData Type="Normal" Path="Menu/dialog/closeBtn.png" />
+              </NodeObjectData>
             </Children>
+            <FileData Type="Normal" Path="Menu/dialog/panel.png" />
             <SingleColor A="255" R="150" G="200" B="255" />
             <FirstColor A="255" R="150" G="200" B="255" />
             <EndColor A="255" R="255" G="255" B="255" />
