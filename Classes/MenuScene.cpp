@@ -5,7 +5,6 @@
 #include "AnimationUtils.h"
 #include "I18N.h"
 #include "SimpleAudioEngine.h"
-#include "CloudManager.h"
 
 Scene* MenuScene::createScene() {
 	auto scene = Scene::create();
@@ -40,9 +39,9 @@ void MenuScene::loadUIAndSetListner() {
 	//auto mouse = (Sprite*)(rootNode->getChildByName("mouse"));
 	//mouse->runAction(Animate::create(AnimationUtils::createWithName("run", 0.1f, -1)));
 	
-	_itemList = (ListView*)(rootNode->getChildByName("listView"));
+	_itemList = rootNode->getChildByName("btnList");
 
-	auto showOrHideBtn = (Button*)(_itemList->getChildByName("showOrHideBtn"));
+	auto showOrHideBtn = (Button*)(_itemList->getChildByName("showBtn"));
 	showOrHideBtn->addTouchEventListener(this, toucheventselector(MenuScene::showOrHideEvent));
 
 	/*
@@ -52,8 +51,8 @@ void MenuScene::loadUIAndSetListner() {
 	auto helpBtn = (Button*)(_itemList->getChildByName("help"));
 	helpBtn->addTouchEventListener(this, toucheventselector(MenuScene::showHelp));*/
 
-	auto settingBtn = (Button*)(_itemList->getChildByName("setting"));
-	settingBtn->addTouchEventListener(this, toucheventselector(MenuScene::showSetting));
+	//auto settingBtn = (Button*)(_itemList->getChildByName("setting"));
+	//settingBtn->addTouchEventListener(this, toucheventselector(MenuScene::showSetting));
 
 	/*
 	auto infoBtn = (Button*)(_itemList->getChildByName("info"));
@@ -87,9 +86,9 @@ void MenuScene::showOrHideEvent(Ref* sender, TouchEventType type) {
 		showOrHideBtn->setScale(1);
 		Point curPoint = _itemList->getPosition();
 		_isShow = !_isShow;
-		MoveBy* moveBy = MoveBy::create(0.35f, Point(0, 240 * (_isShow ? 1 : -1)));
-		_itemList->runAction(moveBy);
+		MoveBy* moveBy = MoveBy::create(0.35f, Point(0, 245 * (_isShow ? 1 : -1)));
 		showOrHideBtn->setFlippedY(_isShow);
+		_itemList->runAction(moveBy);
 	}
 	else if (type == TouchEventType::TOUCH_EVENT_BEGAN) {
 		showOrHideBtn->setScale(BUTTON_CLICK_SCALE);

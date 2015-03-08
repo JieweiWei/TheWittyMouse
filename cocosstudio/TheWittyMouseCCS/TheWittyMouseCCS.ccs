@@ -8,23 +8,31 @@
           <Image Name="background.png" />
           <Image Name="cloud.png" />
           <Image Name="cloud2.png" />
-          <Image Name="greenHuLuBig.png" />
-          <Image Name="redHuLuBig.png" />
           <Image Name="redHuLuSmall.png" />
           <Image Name="yellowHuLuBig.png" />
           <Image Name="yellowHuLuSmall.png" />
           <Image Name="flower.png" />
           <Image Name="fall01.png" />
           <Folder Name="btn">
-            <Image Name="back.png" />
             <Image Name="base.png" />
-            <Image Name="closeBtn.png" />
-            <Image Name="forward.png" />
-            <Image Name="pauseBtn.png" />
-            <Image Name="playBtn.png" />
+            <Image Name="developerBtn.png" />
             <Image Name="settingBtn.png" />
+            <Image Name="helpBtn.png" />
+            <Image Name="infoBtn.png" />
             <Image Name="showBtn.png" />
+            <Image Name="developerSelected.png" />
+            <Image Name="helpSelected.png" />
+            <Image Name="infoSelected.png" />
+            <Image Name="settingSelected.png" />
+            <Image Name="showSelected.png" />
           </Folder>
+          <Folder Name="dialog">
+            <Image Name="panel.png" />
+            <Image Name="titleBg.png" />
+          </Folder>
+          <Image Name="redHuluSelected.png" />
+          <Image Name="redHuluNormal.png" />
+          <Image Name="yellowHuluNormal.png" />
         </Folder>
       </RootFolder>
     </Group>

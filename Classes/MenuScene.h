@@ -36,7 +36,7 @@ private:
 
 private:
 	bool _isShow;
-	ListView* _itemList;
+	Node* _itemList;
 	Popup* _popup;
 };
 
